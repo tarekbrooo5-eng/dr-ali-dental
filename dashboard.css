@@ -1,0 +1,90 @@
+:root { --primary:#1e88e5; --dark:#1565c0; --bg:#f4f9fd; --ok:#43a047; --warn:#ef6c00; --danger:#e53935; }
+* { box-sizing:border-box; margin:0; padding:0; font-family:'Cairo', sans-serif; }
+body { background:var(--bg); color:#333; }
+
+/* شاشة الدخول */
+.login-box { max-width:400px; margin:80px auto; background:#fff; padding:30px; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,.1); text-align:center; }
+.login-box h2 { color:var(--dark); margin-bottom:8px; }
+.login-box p { color:#666; margin-bottom:20px; font-size:14px; }
+.login-box input { width:100%; padding:12px; margin-bottom:12px; border:1px solid #ddd; border-radius:8px; font-family:inherit; }
+.login-box button { width:100%; padding:12px; background:var(--primary); color:#fff; border:none; border-radius:8px; font-weight:700; cursor:pointer; }
+.error { color:red; margin-top:10px; font-size:14px; }
+
+/* الهيدر */
+.app-header { background:#fff; box-shadow:0 2px 10px rgba(0,0,0,.05); padding:15px 25px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:15px; position:sticky; top:0; z-index:100; }
+.brand h1 { font-size:20px; color:var(--primary); }
+.brand span { font-size:12px; color:#888; }
+.tabs { display:flex; gap:8px; }
+.tab-btn { padding:10px 18px; background:#eef5fb; border:none; border-radius:25px; cursor:pointer; font-weight:600; color:#555; font-family:inherit; }
+.tab-btn.active { background:var(--primary); color:#fff; }
+.logout { background:var(--danger); color:#fff; border:none; padding:8px 15px; border-radius:6px; cursor:pointer; font-family:inherit; }
+
+main { max-width:1200px; margin:25px auto; padding:0 20px; }
+.tab-content { display:none; }
+.tab-content.active { display:block; }
+.tab-content h2 { color:var(--dark); margin-bottom:20px; }
+.section-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+
+/* بطاقات الحجوزات */
+.booking-card, .patient-card { background:#fff; padding:18px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,.05); margin-bottom:12px; border-right:5px solid var(--primary); }
+.booking-card.confirmed { border-right-color:var(--ok); }
+.booking-card.cancelled { border-right-color:var(--danger); opacity:.7; }
+.booking-card h3, .patient-card h3 { color:var(--dark); margin-bottom:8px; font-size:17px; }
+.booking-card p, .patient-card p { font-size:14px; margin-bottom:4px; color:#555; }
+.status-badge { padding:3px 10px; border-radius:15px; font-size:12px; font-weight:700; }
+.status-pending { background:#fff3e0; color:var(--warn); }
+.status-confirmed { background:#e8f5e9; color:#2e7d32; }
+.status-cancelled { background:#ffebee; color:#c62828; }
+.actions { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap; }
+.actions button { padding:7px 14px; border:none; border-radius:6px; cursor:pointer; font-weight:700; font-family:inherit; font-size:13px; }
+.btn-confirm, .btn-success { background:var(--ok); color:#fff; }
+.btn-cancel, .btn-danger { background:var(--danger); color:#fff; }
+.btn-primary { background:var(--primary); color:#fff; padding:8px 16px; border:none; border-radius:6px; cursor:pointer; font-family:inherit; font-weight:700; }
+
+/* النوافذ المنبثقة */
+.modal { position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:200; overflow-y:auto; padding:30px 15px; }
+.modal-content { background:#fff; max-width:500px; margin:auto; padding:25px; border-radius:15px; position:relative; }
+.modal-content.large { max-width:1000px; }
+.modal-content h3 { color:var(--dark); margin-bottom:15px; }
+.modal-content label { display:block; margin:10px 0 5px; font-weight:600; font-size:14px; }
+.modal-content input, .modal-content select, .modal-content textarea { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; margin-bottom:5px; }
+.modal-content .close { position:absolute; top:10px; left:15px; font-size:26px; cursor:pointer; color:#999; }
+.modal-content .btn-primary { margin-top:15px; width:100%; padding:12px; }
+
+/* مخطط الأسنان */
+.dental-chart { direction:ltr; margin:20px 0; background:#fafdff; padding:20px; border-radius:12px; }
+.arch-row { display:flex; justify-content:center; gap:4px; margin:10px 0; }
+.arch-row .divider { width:20px; }
+.tooth { width:42px; height:52px; border:2px solid #bbb; background:#fff; cursor:pointer; font-weight:700; color:#555; font-family:inherit; transition:.2s; display:flex; align-items:flex-end; justify-content:center; padding-bottom:3px; font-size:12px; }
+.tooth.upper { border-radius:50% 50% 15% 15%; }
+.tooth.lower { border-radius:15% 15% 50% 50%; align-items:flex-start; padding-top:3px; padding-bottom:0; }
+.tooth:hover { transform:scale(1.1); border-color:var(--primary); }
+.tooth.pending { background:#fff3e0; border-color:var(--warn); color:#000; }
+.tooth.in-progress { background:#ffe0b2; border-color:var(--warn); color:#000; }
+.tooth.done { background:#c8e6c9; border-color:var(--ok); color:#000; }
+
+/* ملف المريض */
+.patient-tabs { display:flex; gap:8px; margin:15px 0; border-bottom:2px solid #eee; }
+.patient-tabs button { background:none; border:none; padding:10px 15px; cursor:pointer; font-weight:700; color:#888; font-family:inherit; border-bottom:3px solid transparent; }
+.patient-tabs button.active { color:var(--primary); border-bottom-color:var(--primary); }
+.patient-panel { display:none; padding:15px 0; }
+.patient-panel.active { display:block; }
+.info-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-bottom:20px; }
+.info-box { background:#f4f9fd; padding:15px; border-radius:10px; }
+.info-box .label { font-size:13px; color:#666; }
+.info-box .value { font-size:22px; font-weight:700; color:var(--dark); margin-top:5px; }
+.data-table { width:100%; border-collapse:collapse; margin:10px 0; }
+.data-table th, .data-table td { padding:10px; text-align:right; border-bottom:1px solid #eee; font-size:14px; }
+.data-table th { background:#f4f9fd; color:var(--dark); }
+
+/* التقارير */
+.report-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px; }
+.report-card { background:#fff; padding:25px; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,.05); }
+.report-card h3 { color:var(--dark); margin-bottom:10px; }
+.report-card p { color:#666; font-size:14px; margin-bottom:15px; }
+.report-card select { width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-family:inherit; margin-bottom:10px; }
+
+@media (max-width:700px) {
+  .tooth { width:30px; height:40px; font-size:10px; }
+  .app-header { padding:10px; }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة تحكم عيادة د. علي حسن</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+<!-- شاشة الدخول -->
+<div id="login-section" class="login-box">
+  <h2>🔐 دخول لوحة التحكم</h2>
+  <p>خاص بالدكتور علي حسن</p>
+  <input type="email" id="email" placeholder="البريد الإلكتروني">
+  <input type="password" id="password" placeholder="كلمة المرور">
+  <button onclick="window.login()">تسجيل الدخول</button>
+  <p id="login-error" class="error"></p>
+</div>
+
+<!-- التطبيق -->
+<div id="app" style="display:none;">
+  <header class="app-header">
+    <div class="brand">
+      <h1>🦷 عيادة د. علي حسن</h1>
+      <span>لوحة التحكم</span>
+    </div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="bookings">📋 الحجوزات</button>
+      <button class="tab-btn" data-tab="patients">👥 المرضى</button>
+      <button class="tab-btn" data-tab="reports">📊 التقارير</button>
+    </nav>
+    <button class="logout" onclick="window.logout()">خروج</button>
+  </header>
+
+  <main>
+    <!-- تبويب الحجوزات -->
+    <section id="tab-bookings" class="tab-content active">
+      <h2>الحجوزات الواردة</h2>
+      <div id="bookings-list"></div>
+    </section>
+
+    <!-- تبويب المرضى -->
+    <section id="tab-patients" class="tab-content">
+      <div class="section-head">
+        <h2>قائمة المرضى</h2>
+        <button class="btn-primary" onclick="window.openNewPatient()">+ مريض جديد</button>
+      </div>
+      <div id="patients-list"></div>
+    </section>
+
+    <!-- تبويب التقارير -->
+    <section id="tab-reports" class="tab-content">
+      <h2>التقارير والتصدير</h2>
+      <div class="report-cards">
+        <div class="report-card">
+          <h3>📥 تصدير قائمة المرضى</h3>
+          <p>تصدير بيانات المرضى وحساباتهم إلى ملف Excel أو PDF.</p>
+          <div class="actions">
+            <button class="btn-success" onclick="window.exportPatientsExcel()">Excel</button>
+            <button class="btn-danger" onclick="window.exportPatientsPDF()">PDF</button>
+          </div>
+        </div>
+        <div class="report-card">
+          <h3>📥 تصدير دفعات مريض</h3>
+          <p>اختر مريضاً لتصدير كل دفعاته ومواعيدها.</p>
+          <select id="report-patient-select"></select>
+          <div class="actions">
+            <button class="btn-success" onclick="window.exportPatientPaymentsExcel()">Excel</button>
+            <button class="btn-danger" onclick="window.exportPatientPaymentsPDF()">PDF</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- نافذة المريض -->
+<div id="patient-modal" class="modal" style="display:none;">
+  <div class="modal-content large">
+    <span class="close" onclick="window.closePatientModal()">×</span>
+    <div id="patient-modal-body"></div>
+  </div>
+</div>
+
+<!-- نافذة السن -->
+<div id="tooth-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="window.closeToothModal()">×</span>
+    <h3 id="tooth-modal-title">السن</h3>
+    <label>نوع المعالجة</label>
+    <select id="tooth-treatment">
+      <option value="">— سليم —</option>
+      <option value="تسوس">تسوس</option>
+      <option value="حشوة ملغم">حشوة ملغم</option>
+      <option value="حشوة كومبوزيد">حشوة كومبوزيد</option>
+      <option value="سحب عصب">سحب عصب (معالجة لبية)</option>
+      <option value="تاج">تاج</option>
+      <option value="قلع">قلع</option>
+    </select>
+    <label>الحالة</label>
+    <select id="tooth-status">
+      <option value="pending">قيد الانتظار</option>
+      <option value="in-progress">قيد التنفيذ</option>
+      <option value="done">مكتمل</option>
+    </select>
+    <label>التكلفة</label>
+    <input type="number" id="tooth-cost" placeholder="0">
+    <label>ملاحظة</label>
+    <textarea id="tooth-note" rows="2"></textarea>
+    <button class="btn-primary" onclick="window.saveTooth()">حفظ</button>
+    <button class="btn-danger" onclick="window.deleteTooth()">حذف المعالجة</button>
+  </div>
+</div>
+
+<!-- نافذة مريض جديد -->
+<div id="new-patient-modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" onclick="document.getElementById('new-patient-modal').style.display='none'">×</span>
+    <h3>مريض جديد</h3>
+    <label>الاسم</label><input type="text" id="np-name">
+    <label>الهاتف</label><input type="tel" id="np-phone">
+    <label>ملاحظات</label><textarea id="np-notes" rows="2"></textarea>
+    <button class="btn-primary" onclick="window.saveNewPatient()">حفظ</button>
+  </div>
+</div>
+
+<script type="module" src="dashboard.js"></script>
+</body>
+</html>

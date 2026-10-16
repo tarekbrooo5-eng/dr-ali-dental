@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عيادة الدكتور علي حسن لطب الأسنان</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <h1>د. علي حسن</h1>
+                <p>طب وجراحة الأسنان</p>
+            </div>
+            <nav>
+                <a href="#home">الرئيسية</a>
+                <a href="#services">خدماتنا</a>
+                <a href="#booking">حجز موعد</a>
+                <a href="#contact">اتصل بنا</a>
+            </nav>
+            <a href="tel:0935866648" class="btn-call">📞 0935866648</a>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>ابتسامتك تستحق الأفضل</h2>
+            <p>نقدم لك أحدث علاجات طب الأسنان بأيدي خبيرة وأحدث التقنيات.</p>
+            <a href="#booking" class="btn-primary">احجز موعدك الآن</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>خدماتنا الطبية</h2>
+            <div class="services-grid">
+                <div class="service-card"><h3>قلع الأضراس</h3><p>خلع الأسنان والضروس بأمان وراحة تامة.</p></div>
+                <div class="service-card"><h3>الحشوات الترميمية</h3><p>حشوة الملغم وحشوة الكومبوزيد (تجميلية).</p></div>
+                <div class="service-card"><h3>معالجة لبية (سحب عصب)</h3><p>علاج جذور الأسنان لإنقاذ السن المتضرر.</p></div>
+                <div class="service-card"><h3>التيجان</h3><p>تركيب تيجان لحماية الأسنان المتضررة وتعويضها.</p></div>
+                <div class="service-card"><h3>تنظيف اللثة</h3><p>إزالة الجير والرواسب للحفاظ على صحة اللثة.</p></div>
+                <div class="service-card"><h3>تبييض الأسنان</h3><p>تبييض يشمل جميع الأسنان للحصول على ابتسامة مشرقة.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="booking-section">
+        <div class="container">
+            <h2>حجز موعد جديد</h2>
+            <form id="bookingForm">
+                <div class="form-group"><label for="name">الاسم الكامل</label><input type="text" id="name" required placeholder="أدخل اسمك"></div>
+                <div class="form-group"><label for="phone">رقم الهاتف</label><input type="tel" id="phone" required placeholder="أدخل رقم هاتفك"></div>
+                <div class="form-group">
+                    <label for="service">الخدمة المطلوبة</label>
+                    <select id="service" required>
+                        <option value="">اختر الخدمة...</option>
+                        <option value="قلع الأضراس">قلع الأضراس</option>
+                        <option value="حشوة الملغم">حشوة الملغم</option>
+                        <option value="حشوة الكومبوزيد">حشوة الكومبوزيد</option>
+                        <option value="معالجة لبية (سحب عصب)">معالجة لبية (سحب عصب)</option>
+                        <option value="التيجان">التيجان</option>
+                        <option value="تنظيف اللثة">تنظيف اللثة</option>
+                        <option value="تبييض الأسنان">تبييض الأسنان</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="date">التاريخ المفضل</label><input type="date" id="date" required></div>
+                <div class="form-group"><label for="notes">ملاحظات إضافية (اختياري)</label><textarea id="notes" rows="3" placeholder="أي تفاصيل تود إضافتها..."></textarea></div>
+                <button type="submit" class="btn-primary">تأكيد الحجز</button>
+            </form>
+            <p id="formMessage" class="hidden"></p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>تواصل معنا</h3>
+            <p>📞 الهاتف: 0935866648</p>
+            <p>📍 العنوان: [سيتم إضافته لاحقاً]</p>
+            <p>🕒 ساعات العمل: [سيتم إضافتها لاحقاً]</p>
+            <a href="https://www.facebook.com/profile.php?id=61594676233062" target="_blank" class="btn-facebook">صفحتنا على فيسبوك</a>
+        </div>
+        <div class="copyright"><p>© 2026 عيادة الدكتور علي حسن. جميع الحقوق محفوظة.</p></div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
